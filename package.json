@@ -1,0 +1,20 @@
+{
+  "name": "browser-home",
+  "version": "1.0.0",
+  "description": "A browser home extension for Minimalists",
+  "scripts": {
+    "dev": "bun --watch run tools/build.ts --dev",
+    "build": "bun run tools/build.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.3",
+    "@biomejs/js-api": "^0.7.1",
+    "@biomejs/wasm-nodejs": "^1.9.3",
+    "@types/bun": "^1.1.11",
+    "@types/chrome": "^0.0.277",
+    "chalk": "^5.3.0",
+    "chokidar": "^4.0.1",
+    "esbuild": "^0.24.0",
+    "sass": "^1.79.5"
+  }
+}
