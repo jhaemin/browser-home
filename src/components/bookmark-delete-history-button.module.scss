@@ -1,0 +1,33 @@
+.bookmark-delete-history-slide-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+
+  &.bookmark-delete-history-slide-over--open {
+    pointer-events: all;
+    opacity: 1;
+    transform: none;
+  }
+
+  .bookmark-delete-history-slide-over-content {
+    width: 100%;
+    background-color: var(--slate-1);
+    border-radius: var(--radius-5);
+    box-shadow: var(--shadow-4);
+  }
+
+  .rt-ScrollAreaViewport {
+    overscroll-behavior: contain;
+
+    & > div {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.top-corner-more-wrapper {
+  pointer-events: none;
+}
+
+.top-corner-more {
+  pointer-events: all;
+
+  padding: var(--space-3);
+  border-radius: var(--radius-5);
+  background-color: var(--slate-3);
+  z-index: 999999;
+  transition: transform 200ms ease;
+}

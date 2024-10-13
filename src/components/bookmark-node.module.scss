@@ -1,0 +1,172 @@
+.bookmark-node {
+  flex: none;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+
+  width: 100%;
+  height: 32px;
+
+  padding: 0 var(--space-2);
+
+  border-radius: var(--radius-3);
+
+  transition: background-color 0.2s;
+
+  cursor: pointer;
+
+  &.folder {
+    cursor: default;
+  }
+
+  &:hover {
+    background-color: var(--slate-a2);
+  }
+
+  // When mouse over the middle of the folder node,
+  // change background color to indicate drop target
+  &:has(.drag-over-target--middle:hover) {
+    background-color: var(--slate-a2);
+  }
+
+  // Unset background color when mouse over the pin
+  &:has(.pin:hover) {
+    &:not(.selected):hover {
+      background-color: unset;
+    }
+  }
+
+  &:active {
+    background-color: var(--slate-a3);
+    transition: none;
+  }
+
+  &:focus-visible {
+    // background-color: var(--slate-a3);
+    outline: 2px solid var(--accent-a9);
+  }
+
+  .bookmark-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &.selected {
+    background-color: var(--slate-a3);
+  }
+
+  .icon-and-name {
+    max-width: 100%;
+  }
+
+  // When mouse over or pinned, narrow down the width to show pin icon
+  &.pinned {
+    .icon-and-name {
+      // 16px is the width of the pin
+      // 16px is the width of the space between the icon and the name
+      max-width: calc(100% - 16px - var(--space-2));
+    }
+  }
+
+  .pin {
+    cursor: default;
+    position: absolute;
+    top: 50%;
+    right: var(--space-2);
+    transform: translateY(-50%);
+    width: 18px;
+    height: 16px;
+    border-radius: var(--radius-3);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+
+    svg {
+      transition: transform 0.2s;
+    }
+
+    &:hover svg {
+      transform: translateY(-10%);
+    }
+
+    &:active svg {
+      transform: translateY(20%) scaleY(0.8);
+    }
+  }
+
+  // Make pin icon visible when mouse over or pinned
+  // or when the tour is on
+  &:hover,
+  &.pinned,
+  &.for-tour {
+    .pin {
+      opacity: 1;
+    }
+  }
+
+  .drag-over-target {
+    position: absolute;
+    width: 100%;
+    height: 16px;
+
+    left: 0;
+
+    pointer-events: none;
+
+    &.drag-over-target--top {
+      top: 0;
+      transform: translateY(-50%);
+    }
+
+    &.drag-over-target--middle {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.drag-over-target--bottom {
+      bottom: 0;
+      transform: translateY(50%);
+    }
+
+    &:hover {
+      .drag-over-target-indicate {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+
+        width: 100%;
+        height: 2px;
+        background-color: var(--blue-a9);
+
+        border-radius: 50px;
+      }
+    }
+
+    &.drag-over-target--for-page {
+      height: 16px;
+      transform: none;
+
+      &.drag-over-target--top:hover .drag-over-target-indicate {
+        top: 0;
+      }
+
+      &.drag-over-target--bottom:hover .drag-over-target-indicate {
+        top: 100%;
+      }
+    }
+  }
+}
+
+body.dragging {
+  .bookmark-node {
+    background-color: transparent;
+  }
+
+  .folder-column:not(.read-only) .drag-over-target {
+    pointer-events: all;
+  }
+}

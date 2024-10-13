@@ -20,6 +20,7 @@
     "newtab",
     "outdir",
     "reactour",
-    "superstruct"
+    "superstruct",
+    "typecheck"
   ]
 }
