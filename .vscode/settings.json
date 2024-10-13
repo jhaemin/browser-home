@@ -12,5 +12,14 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["biomejs", "chok", "newtab", "outdir"]
+  "cSpell.words": [
+    "biomejs",
+    "chok",
+    "lucide",
+    "nanostores",
+    "newtab",
+    "outdir",
+    "reactour",
+    "superstruct"
+  ]
 }
