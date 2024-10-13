@@ -7,7 +7,7 @@
 import { cp, rm } from 'node:fs/promises'
 import { manifest } from '@/manifest'
 import chok from 'chokidar'
-import esbuild from 'esbuild'
+import { buildContext } from './build-context'
 import { dev, prod } from './build-env'
 import { cyan, green, red, yellow } from './chalk'
 import { copyAllStaticFiles } from './copy-all-static-files'
@@ -19,28 +19,6 @@ import { compileAllSCSS, compileSCSS } from './sass'
 // Display build information
 logger.log(`${yellow('[version]')} ${manifest.version}`)
 logger.log(`${red('[mode]')} ${dev ? 'development' : 'production'}`)
-
-const buildContext = await esbuild.context({
-  entryPoints: ['./src/main.ts'],
-  bundle: true,
-  target: 'ES2020',
-  minify: prod,
-  outdir,
-  write: true,
-  sourcemap: dev,
-  plugins: [
-    {
-      name: 'rebuild-notification',
-      setup(build) {
-        build.onEnd((result) => {
-          logger.log(
-            `${green('[bundled]')} ${result.errors.length} errors, ${result.warnings.length} warnings - ${new Date().toLocaleTimeString()}`
-          )
-        })
-      },
-    },
-  ],
-})
 
 // Initial build process
 await clearOutdir()
