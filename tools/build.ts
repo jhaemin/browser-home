@@ -75,10 +75,13 @@ if (dev) {
             await generateManifest({ staticFiles })
           }
         }
-      } else if (path.endsWith('.scss') && !path.includes('.module')) {
+      } else if (path.endsWith('.scss')) {
         if (event === 'add' || event === 'change') {
           logger.log(`${yellow('[compiled]')} ${path}`)
-          await compileSCSS(path)
+          // Compile all SCSS files because we don't know
+          // which SCSS files are importing the changed file
+          // if the changed file is a module
+          await compileAllSCSS()
         } else if (event === 'unlink') {
           logger.log(`${red('[removed]')} ${path}`)
           const cssPath = relativePath.replace('.scss', '.css')
