@@ -196,7 +196,7 @@ export namespace HomeUtil {
   /**
    * Reset all related storage. Only for development.
    */
-  export async function resetAllRelatedStorage() {
+  export async function DEBUG_resetAllRelatedStorage() {
     await chrome.storage.local.remove([
       HomeConst.BREADCRUMBS_KEY,
       HomeConst.FOLDER_PINS_KEY,
