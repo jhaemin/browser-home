@@ -64,6 +64,7 @@
   }
 
   // When mouse over or pinned, narrow down the width to show pin icon
+  &:hover,
   &.pinned {
     .icon-and-name {
       // 16px is the width of the pin
@@ -86,14 +87,6 @@
 
     svg {
       transition: transform 0.2s;
-    }
-
-    &:hover svg {
-      transform: translateY(-10%);
-    }
-
-    &:active svg {
-      transform: translateY(20%) scaleY(0.8);
     }
   }
 

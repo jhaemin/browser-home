@@ -241,4 +241,48 @@ export namespace HomeUtil {
       }
     }
   }
+
+  type SanitizedBookmark = {
+    title: string
+    url?: string
+    children?: SanitizedBookmark[]
+  }
+
+  function sanitizeBookmark(
+    bookmark: chrome.bookmarks.BookmarkTreeNode
+  ): SanitizedBookmark {
+    const sanitized: SanitizedBookmark = {
+      title: bookmark.title,
+    }
+
+    if (bookmark.url) {
+      sanitized.url = bookmark.url
+    }
+
+    if (bookmark.children) {
+      sanitized.children = bookmark.children.map(sanitizeBookmark)
+    }
+
+    return sanitized
+  }
+
+  export async function exportBookmarkFolder(folderId: string) {
+    const folder = (await chrome.bookmarks.getSubTree(folderId))[0]
+
+    if (!folder || !checkIfFolder(folder)) return
+
+    const sanitized = sanitizeBookmark(folder)
+
+    const blob = new Blob([JSON.stringify(sanitized)], {
+      type: 'application/json',
+    })
+
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `Browser_Home_export_folder__${folder.title}.json`
+    a.click()
+    URL.revokeObjectURL(url)
+    a.remove()
+  }
 }

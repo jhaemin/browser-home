@@ -1,11 +1,11 @@
 import { useStore } from '@nanostores/react'
-import { Box, Flex, Grid, Heading, Spinner } from '@radix-ui/themes'
+import { DrawingPinFilledIcon } from '@radix-ui/react-icons'
+import { Box, Flex, Grid, Heading } from '@radix-ui/themes'
 import { arrayMoveImmutable } from 'array-move'
 import clsx from 'clsx'
 import { animate, spring } from 'motion'
 import { useEffect, useRef } from 'react'
 import { Flipped, Flipper } from 'react-flip-toolkit'
-import { PinIcon } from '../assets/pin-icon'
 import { HomeConst } from '../constants'
 import { HomeUtil } from '../home-util'
 import { $bookmarksMap, $folderPins } from '../store'
@@ -263,7 +263,7 @@ function FolderPinItem({ pinId }: { pinId: string }) {
         </Heading>
 
         <Flex
-          className="folder-pin pin-pinned"
+          className="folder-pin"
           width="20px"
           height="20px"
           align="center"
@@ -276,7 +276,7 @@ function FolderPinItem({ pinId }: { pinId: string }) {
             })
           }}
         >
-          <PinIcon pinned />
+          <DrawingPinFilledIcon color="var(--orange-9)" />
         </Flex>
       </Flex>
       <Flex height="340px">

@@ -1,15 +1,17 @@
 import { useStore } from '@nanostores/react'
 import {
   ClipboardIcon,
+  DrawingPinFilledIcon,
+  DrawingPinIcon,
   Pencil1Icon,
   PlusIcon,
   TrashIcon,
+  UploadIcon,
 } from '@radix-ui/react-icons'
 import { ContextMenu, Flex, Text } from '@radix-ui/themes'
 import clsx from 'clsx'
 import { type ReactNode, useRef } from 'react'
 import { FolderIcon } from '../assets/folder-icon'
-import { PinIcon } from '../assets/pin-icon'
 import { HomeConst } from '../constants'
 import { HomeUtil } from '../home-util'
 import {
@@ -265,7 +267,11 @@ export function BookmarkNode({ bookmarkId }: { bookmarkId: string }) {
                 await HomeUtil.toggleBookmarkPin(bookmark)
               }}
             >
-              <PinIcon pinned={pinned} />
+              {pinned ? (
+                <DrawingPinFilledIcon color="var(--orange-9)" />
+              ) : (
+                <DrawingPinIcon />
+              )}
             </Flex>
 
             {/* Drag over target */}
@@ -376,9 +382,23 @@ export function BookmarkNode({ bookmarkId }: { bookmarkId: string }) {
               {pinned
                 ? `Unpin ${isFolder ? 'Folder' : 'Page'}`
                 : `Pin ${isFolder ? 'Folder' : 'Page'}`}
-              <PinIcon slashed={pinned} width={14} />
+              {/* <PinIcon slashed={pinned} width={14} /> */}
+              <DrawingPinIcon />
             </DialogItemFlex>
           </ContextMenu.Item>
+
+          {isFolder && (
+            <ContextMenu.Item
+              onClick={async () => {
+                await HomeUtil.exportBookmarkFolder(bookmark.id)
+              }}
+            >
+              <DialogItemFlex>
+                Export
+                <UploadIcon />
+              </DialogItemFlex>
+            </ContextMenu.Item>
+          )}
 
           {/* Can't remove root bookmarks */}
           {canDelete && (

@@ -1,12 +1,11 @@
 import { useStore } from '@nanostores/react'
-import { Pencil1Icon } from '@radix-ui/react-icons'
+import { DrawingPinIcon, Pencil1Icon } from '@radix-ui/react-icons'
 import { ContextMenu, Flex, Grid, Text } from '@radix-ui/themes'
 import { arrayMoveImmutable } from 'array-move'
 import clsx from 'clsx'
 import { animate, spring } from 'motion'
 import { useEffect, useRef } from 'react'
 import { Flipped, Flipper } from 'react-flip-toolkit'
-import { PinIcon } from '../assets/pin-icon'
 import { HomeConst } from '../constants'
 import { HomeUtil } from '../home-util'
 import { $bookmarksMap, $editBookmark, $pagePins } from '../store'
@@ -310,7 +309,7 @@ function PagePinItem({ pinId }: { pinId: string }) {
           >
             <Flex width="100%" align="center" gap="5" justify="between">
               Unpin
-              <PinIcon slashed />
+              <DrawingPinIcon />
             </Flex>
           </ContextMenu.Item>
           <ContextMenu.Item
