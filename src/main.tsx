@@ -123,8 +123,6 @@ document.documentElement.style.setProperty(
  * When the app is ready, stagger the top-level elements for a smooth entrance.
  */
 $appReady.listen(async (ready) => {
-  console.log('App ready:', ready)
-
   const root = document.getElementById('root')
 
   if (!root) {
