@@ -1,9 +1,9 @@
-@use "./components/bookmark-node.module.scss";
-@use "./components/more.module.scss";
-@use "./components/bookmark-delete-history-button.module.scss";
-@use "./components/settings.module.scss";
-@use "./components/search.module.scss";
-@use "./components/tour-wrapper.module.scss";
+@use "./components/bookmark-node.scss";
+@use "./components/more.scss";
+@use "./components/bookmark-delete-history-button.scss";
+@use "./components/settings.scss";
+@use "./components/search.scss";
+@use "./components/tour-wrapper.scss";
 
 :root {
   --slate-3: color(display-p3 0.94 0.941 0.953);

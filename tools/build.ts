@@ -14,7 +14,7 @@ import { copyAllStaticFiles } from './copy-all-static-files'
 import { generateManifest } from './generate-manifest'
 import { logger } from './logger'
 import { clearOutdir, outdir } from './outdir'
-import { compileAllSCSS, compileSCSS } from './sass'
+import { compileAllSCSS } from './sass'
 
 // Display build information
 logger.log(`${yellow('[version]')} ${manifest.version}`)
@@ -80,11 +80,10 @@ if (dev) {
           logger.log(`${yellow('[compiled]')} ${path}`)
           // Compile all SCSS files because we don't know
           // which SCSS files are importing the changed file
-          // if the changed file is a module
           await compileAllSCSS()
         } else if (event === 'unlink') {
           logger.log(`${red('[removed]')} ${path}`)
-          const cssPath = relativePath.replace('.scss', '.css')
+          const cssPath = relativePath.replace('.entry.scss', '.css')
           await rm(`${outdir}/${cssPath}`, { force: true }) // Ignore if the file doesn't exist
         }
       }
