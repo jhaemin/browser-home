@@ -121,7 +121,7 @@ export function App() {
           </Text>
         </Flex>
 
-        <More />
+        {/* <More /> */}
       </Flex>
 
       <BookmarkDialog />

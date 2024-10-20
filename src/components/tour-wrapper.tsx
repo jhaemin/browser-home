@@ -63,8 +63,7 @@ export function TourWrapper() {
       content: (
         <Text>
           This is the Breadcrumbs. Here you can see and manage all your browser
-          bookmarks at a glance. All data is perfectly synchronized with the
-          browser.
+          bookmarks at a glance. All data is synced with the browser.
         </Text>
       ),
     },
@@ -76,8 +75,8 @@ export function TourWrapper() {
       },
       content: (
         <Text>
-          Click on a folder to expand and click on a page to navigate.
-          Right-click to see more actions.
+          Click folder to expand. Click page to open. Right-click to see more
+          actions.
         </Text>
       ),
     },
@@ -88,25 +87,22 @@ export function TourWrapper() {
         window.dispatchEvent(new Event('resize'))
       },
       content: (
-        <Text>
-          Pin your favorite folders and pages to access them quickly. Click on a
-          pin to toggle.
-        </Text>
+        <Text>Pin your favorite folders and pages to access them quickly.</Text>
       ),
     },
-    {
-      selector: '.settings',
-      action: (elm) => {
-        elm.scrollIntoView({ block: 'center' })
-        window.dispatchEvent(new Event('resize'))
-      },
-      content: (
-        <Text>
-          You can customize your Browser Home from here. More features will be
-          added in the future, so stay tuned!
-        </Text>
-      ),
-    },
+    // {
+    //   selector: '.settings',
+    //   action: (elm) => {
+    //     elm.scrollIntoView({ block: 'center' })
+    //     window.dispatchEvent(new Event('resize'))
+    //   },
+    //   content: (
+    //     <Text>
+    //       You can customize your Browser Home from here. More features will be
+    //       added in the future, so stay tuned!
+    //     </Text>
+    //   ),
+    // },
   ]
 
   const stepsLength = steps.length
