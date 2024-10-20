@@ -25,6 +25,14 @@ export function Search() {
             onKeyDown={(e) => {
               if (e.key === 'Escape') {
                 e.currentTarget.blur()
+              } else if (e.key === 'Enter') {
+                // Prevent CJK triggering keydown event twice
+                if (e.nativeEvent.isComposing) return
+
+                if (e.nativeEvent.isTrusted) {
+                  const url = `https://www.google.com/search?q=${searchInput}`
+                  window.location.href = url
+                }
               }
             }}
           />
