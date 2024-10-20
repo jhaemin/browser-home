@@ -308,7 +308,7 @@ function PagePinItem({ pinId }: { pinId: string }) {
             }}
           >
             <Flex width="100%" align="center" gap="5" justify="between">
-              Unpin
+              Unpin Page
               <DrawingPinIcon />
             </Flex>
           </ContextMenu.Item>
