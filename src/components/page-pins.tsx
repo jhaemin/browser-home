@@ -22,15 +22,21 @@ type TouchIconTheme = {
  * A map of hostname to touch icon theme
  */
 const touchIconThemes: TouchIconTheme[] = [
-  { pathname: 'sentry.io', file: 'sentry-touch-icon.png' },
-  { pathname: 'drive.google.com', file: 'drive-touch-icon.png' },
-  { pathname: 'calendar.google.com', file: 'calendar-touch-icon.png' },
-  { pathname: 'mail.google.com', file: 'gmail-touch-icon.png' },
-  { pathname: 'chatgpt.com', file: 'chatgpt-touch-icon.png' },
-  { pathname: 'figma.com', file: 'figma-touch-icon.png' },
-  { pathname: 'youtube.com', file: 'youtube-touch-icon.png' },
-  { pathname: 'slack.com', file: 'slack-touch-icon.png' },
-  { pathname: 'copilot.microsoft.com', file: 'copilot-touch-icon.png' },
+  { pathname: 'sentry.io', file: 'assets/images/sentry-touch-icon.png' },
+  { pathname: 'drive.google.com', file: 'assets/images/drive-touch-icon.png' },
+  {
+    pathname: 'calendar.google.com',
+    file: 'assets/images/calendar-touch-icon.png',
+  },
+  { pathname: 'mail.google.com', file: 'assets/images/gmail-touch-icon.png' },
+  { pathname: 'chatgpt.com', file: 'assets/images/chatgpt-touch-icon.png' },
+  { pathname: 'figma.com', file: 'assets/images/figma-touch-icon.png' },
+  { pathname: 'youtube.com', file: 'assets/images/youtube-touch-icon.png' },
+  { pathname: 'slack.com', file: 'assets/images/slack-touch-icon.png' },
+  {
+    pathname: 'copilot.microsoft.com',
+    file: 'assets/images/copilot-touch-icon.png',
+  },
 ]
 
 export function PagePins() {
